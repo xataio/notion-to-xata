@@ -14,7 +14,10 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html className="dark:text-white dark:bg-black bg-white text-black">
+      <Html
+        lang="en"
+        className="dark:text-white dark:bg-black bg-white text-black"
+      >
         <Head>
           <meta
             name="theme-color"
