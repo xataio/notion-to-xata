@@ -171,6 +171,24 @@ const Index: FC<Props> = ({
           </p>
         )}
       </div>
+      <footer className="text-xs">
+        &copy;{" "}
+        <a target="_blank" rel="noreferrer noopener" href="https://xata.io">
+          Xata
+        </a>{" "}
+        {new Date().getFullYear()} ⸱{" "}
+        <a target="_blank" rel="noreferrer noopener" href="https://xata.io">
+          Docs
+        </a>{" "}
+        ⸱{" "}
+        <a
+          target="_blank"
+          rel="noreferrer noopener"
+          href="https://angel.co/company/xata-inc"
+        >
+          We're Hiring
+        </a>
+      </footer>
     </form>
   );
 };
