@@ -44,6 +44,10 @@ class MyDocument extends Document {
             href="/icons/favicon-16x16.png"
           />
           <meta
+            name="description"
+            content="This website allows users to migrate their data from Notion databases to Xata databases in a few clicks."
+          />
+          <meta
             property="og:image"
             content={`https://notion-to-xata.vercel.app/api/og-image`}
           />
