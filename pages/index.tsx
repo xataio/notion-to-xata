@@ -172,11 +172,10 @@ const Index: FC<Props> = ({
         )}
       </div>
       <footer className="text-xs">
-        &copy;{" "}
         <a target="_blank" rel="noreferrer noopener" href="https://xata.io">
           Xata
         </a>{" "}
-        {new Date().getFullYear()} ⸱{" "}
+        ⸱{" "}
         <a target="_blank" rel="noreferrer noopener" href="https://xata.io">
           Docs
         </a>{" "}
