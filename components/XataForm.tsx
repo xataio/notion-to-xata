@@ -53,7 +53,7 @@ export const XataForm: FC<Props> = ({
     <div className="text-left grid gap-3">
       <label className="grid gap-1 relative">
         <Label>Your Xata API Key</Label>
-        <input
+        <Input
           disabled={isAuthenticated}
           className="rounded p-1 w-full border dark:border-neutral-800"
           type="text"

@@ -115,7 +115,7 @@ const Index: FC<Props> = ({
               onClick={() => {
                 window.location.href = notionLink;
               }}
-              className="bg-white border rounded shadow px-4 py-2 my-auto"
+              className="bg-white dark:bg-black dark:border-neutral-700 border rounded shadow px-4 py-2 my-auto"
             >
               Sign in with Notion
             </button>
