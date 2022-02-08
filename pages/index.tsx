@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { Logo } from "../components/Logo";
 import { NotionForm } from "../components/NotionForm";
 import { XataForm } from "../components/XataForm";
-import { redirectUri } from "../util/redirectUri";
+import { getRedirectUri } from "../util/redirectUri";
 import { getProtocol } from "../util/getProtocol";
 import { NotionLogo } from "../components/NotionLogo";
 import { getNotionCookie } from "../util/setNotionCookie";
@@ -186,7 +186,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 
   const oauthParams = {
     client_id: process.env.NOTION_CLIENT_ID,
-    redirect_uri: redirectUri,
+    redirect_uri: getRedirectUri(req.headers.host),
     response_type: "code",
     owner: "user",
   };

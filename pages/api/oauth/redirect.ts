@@ -1,7 +1,7 @@
 import { NextApiHandler } from "next";
 import fetch from "isomorphic-fetch";
 
-import { redirectUri } from "../../../util/redirectUri";
+import { getRedirectUri } from "../../../util/redirectUri";
 import { getProtocol } from "../../../util/getProtocol";
 import { getNotionCookie } from "../../../util/setNotionCookie";
 import { getTomorrow } from "../../../util/getTomorrow";
@@ -22,7 +22,7 @@ const handler: NextApiHandler = async (req, res) => {
         body: JSON.stringify({
           grant_type: "authorization_code",
           code,
-          redirect_uri: redirectUri,
+          redirect_uri: getRedirectUri(req.headers.host),
         }),
       }
     ).then((r) => r.json());
