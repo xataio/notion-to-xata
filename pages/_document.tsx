@@ -43,6 +43,10 @@ class MyDocument extends Document {
             sizes="16x16"
             href="/icons/favicon-16x16.png"
           />
+          <meta
+            property="og:image"
+            content={`https://notion-to-xata.vercel.app/api/og-image`}
+          />
           <link rel="manifest" href="/icons/site.webmanifest" />
           <link
             rel="mask-icon"
