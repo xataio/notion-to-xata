@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "xata";
+  src: url("/fonts/xata.woff2") format("woff2"),
+    url("/fonts/xata.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+
+  @media (prefers-color-scheme: light) {
+    background: white;
+    color: black;
+  }
+}
+
+a:link,
+a:visited {
+  color: theme("colors.primary");
+  @media (prefers-color-scheme: light) {
+    color: theme("colors.primary-light-mode");
+  }
+}
+
+a:hover {
+  color: theme("colors.accent");
+}
+
+h2 {
+  & > button {
+    visibility: hidden;
+  }
+
+  &:hover > button {
+    visibility: visible;
+  }
+}
+
+::selection {
+  background: theme("colors.accent");
+  color: white;
+}
+
+::-moz-selection {
+  background: theme("colors.accent");
+  color: white;
+}
+
+hr {
+  @media (prefers-color-scheme: dark) {
+    border-color: theme("colors.softer-black");
+  }
+}
