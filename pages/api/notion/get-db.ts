@@ -4,6 +4,7 @@ import { snake } from "case";
 
 import { getValueByType } from "../../../util/getValueByType";
 import { getXataTypeEquivalent } from "../../../util/getXataTypeEquivalent";
+import { sanitizeColumnName } from "../../../util/sanitizeColumnName";
 
 const handler: NextApiHandler = async (req, res) => {
   const { id, cursor } = req.query;
@@ -27,7 +28,7 @@ const handler: NextApiHandler = async (req, res) => {
 
   const properties = results?.[0].properties ?? {};
   const columns = Object.keys(properties ?? []).map((c) => ({
-    name: snake(c),
+    name: sanitizeColumnName(c),
     ...getXataTypeEquivalent(properties[c].type),
   }));
 
@@ -49,7 +50,7 @@ const handler: NextApiHandler = async (req, res) => {
 
         return {
           ...acc,
-          [snake(key)]: getValueByType(value),
+          [sanitizeColumnName(key)]: getValueByType(value),
         };
       }, {});
     }) ?? [];

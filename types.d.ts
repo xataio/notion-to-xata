@@ -24,7 +24,8 @@ type NotionType =
   | "created_time"
   | "last_edited_time"
   | "last_edited_by"
-  | "people";
+  | "people"
+  | "relation";
 
 type NotionProperty =
   | {
@@ -39,6 +40,7 @@ type NotionProperty =
       created_time?: never;
       select?: never;
       last_edited_time?: never;
+      relation?: never;
     }
   | { type: "created_by"; created_by: { id: string } }
   | { type: "last_edited_by"; last_edited_by: { id: string } }
@@ -49,7 +51,8 @@ type NotionProperty =
   | { type: "text"; plain_text: string }
   | { type: "created_time"; created_time: string }
   | { type: "select"; select: { name: string } }
-  | { type: "last_edited_time"; last_edited_time: string };
+  | { type: "last_edited_time"; last_edited_time: string }
+  | { type: "relation"; relation: { id: string }[] };
 
 type NotionDbResponse = {
   has_more: boolean;

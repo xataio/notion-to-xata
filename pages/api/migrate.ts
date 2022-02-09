@@ -61,9 +61,11 @@ const handler: NextApiHandler = async (req, res) => {
         : "Existing name found. Suffixed."
     );
 
-    const adjustedDbName = doesXataDatabaseWithSameNameExist
-      ? `${targetDbName}-${Date.now()}`
-      : targetDbName;
+    const adjustedDbName = (
+      doesXataDatabaseWithSameNameExist
+        ? `${targetDbName}-${Date.now()}`
+        : targetDbName
+    ).replace("’", "");
 
     console.info(`Creating database ${adjustedDbName} in Xata...`);
 
@@ -174,7 +176,7 @@ const handler: NextApiHandler = async (req, res) => {
     }
 
     // Add a table
-    const tableName = kebab(from.name);
+    const tableName = kebab(from.name).replace("’", "");
     console.info(`Creating table with name ${tableName}...`);
     await fetch(
       `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/${tableName}`,
@@ -214,8 +216,6 @@ const handler: NextApiHandler = async (req, res) => {
       return r.text();
     });
 
-    console.info("Set. Inserting rows...");
-
     // Replace Notion user IDs with Xata IDs
     const replaceRowUsers = (rows: any[]) => {
       const result = rows.map((r) => {
@@ -231,6 +231,8 @@ const handler: NextApiHandler = async (req, res) => {
     };
 
     const records = replaceRowUsers(rows);
+
+    console.info("Set. Inserting rows...");
 
     // Batch Import to Xata
     await fetch(
