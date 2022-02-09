@@ -167,7 +167,8 @@ const Index: FC<Props> = ({
             >
               workspace
             </a>
-            .
+            . If you'd like to import another Notion database into your
+            workspace(s), please reload this page.
           </p>
         )}
       </div>
