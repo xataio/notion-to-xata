@@ -20,8 +20,6 @@ const handler: NextApiHandler = async (req, res) => {
     },
   }).then((r) => r.json());
 
-  console.log(JSON.stringify(response, null, 2));
-
   if (response.code === "unauthorized") {
     res.setHeader("Set-Cookie", getNotionCookie("", new Date()));
     res.status(401).end(JSON.stringify({ error: "unauthorized" }));
