@@ -19,13 +19,16 @@ type NotionType =
   | "multi_select"
   | "title"
   | "text"
+  | "number"
   | "created_by"
   | "select"
   | "created_time"
+  | "url"
   | "last_edited_time"
   | "last_edited_by"
   | "people"
-  | "relation";
+  | "relation"
+  | "url";
 
 type NotionProperty =
   | {
@@ -41,6 +44,8 @@ type NotionProperty =
       select?: never;
       last_edited_time?: never;
       relation?: never;
+      url?: never;
+      number?: never;
     }
   | { type: "created_by"; created_by: { id: string } }
   | { type: "last_edited_by"; last_edited_by: { id: string } }
@@ -52,7 +57,9 @@ type NotionProperty =
   | { type: "created_time"; created_time: string }
   | { type: "select"; select: { name: string } }
   | { type: "last_edited_time"; last_edited_time: string }
-  | { type: "relation"; relation: { id: string }[] };
+  | { type: "relation"; relation: { id: string }[] }
+  | { type: "url"; url: string }
+  | { type: "number"; number: number };
 
 type NotionDbResponse = {
   has_more: boolean;

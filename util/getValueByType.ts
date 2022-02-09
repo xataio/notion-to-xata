@@ -20,6 +20,10 @@ export const getValueByType = (value: NotionProperty) => {
       return value.last_edited_by?.id ?? null;
     case "people":
       return value.people[0]?.id ?? null;
+    case "number":
+      return value.number;
+    case "url":
+      return value.url;
     case "relation":
       /** @todo figure out how to import relations */
       return value.relation?.[0]?.id ?? null;

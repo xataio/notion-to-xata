@@ -24,6 +24,10 @@ export const getXataTypeEquivalent = (
       return { type: "link", link: { table: "users" } };
     case "relation":
       return { type: "string" };
+    case "number":
+      return { type: "int" };
+    case "url":
+      return { type: "string" };
     default:
       throw new Error(`No Xata type equivalent for ${notionType}`);
   }
