@@ -29,7 +29,7 @@ const handler: NextApiHandler = async (req, res) => {
   const dbs = response.results.map((r) => {
     return {
       id: r.id,
-      name: r.title[0] ? getValueByType(r.title[0]) : "No Title",
+      name: r.title?.[0] ? getValueByType(r.title[0]) : "No Title",
     };
   });
 

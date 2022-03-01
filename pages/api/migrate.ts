@@ -170,7 +170,7 @@ const handler: NextApiHandler = async (req, res) => {
           xataUsers = xataUsers.map((u, i) => ({
             ...u,
             notion_id: u.id,
-            id: result.recordsIDs[i],
+            id: result.recordsIDs?.[i] ?? null,
           }));
         });
     }
