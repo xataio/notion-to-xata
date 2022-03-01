@@ -24,6 +24,12 @@ export const getValueByType = (value: NotionProperty) => {
       return value.number;
     case "url":
       return value.url;
+    case "date":
+      return value.date.end
+        ? `${value.date.start} - ${value.date.end}`
+        : value.date.start;
+    case "checkbox":
+      return value.checkbox;
     case "relation":
       /** @todo figure out how to import relations */
       return value.relation?.[0]?.id ?? null;

@@ -22,12 +22,14 @@ export const getXataTypeEquivalent = (
       return { type: "link", link: { table: "users" } };
     case "people":
       return { type: "link", link: { table: "users" } };
+    case "url":
     case "relation":
+    case "date":
       return { type: "string" };
     case "number":
       return { type: "int" };
-    case "url":
-      return { type: "string" };
+    case "checkbox":
+      return { type: "bool" };
     default:
       throw new Error(`No Xata type equivalent for ${notionType}`);
   }

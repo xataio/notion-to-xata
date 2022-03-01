@@ -20,6 +20,8 @@ type NotionType =
   | "title"
   | "text"
   | "number"
+  | "date"
+  | "checkbox"
   | "created_by"
   | "select"
   | "created_time"
@@ -46,6 +48,8 @@ type NotionProperty =
       relation?: never;
       url?: never;
       number?: never;
+      date?: never;
+      checkbox?: never;
     }
   | { type: "created_by"; created_by: { id: string } }
   | { type: "last_edited_by"; last_edited_by: { id: string } }
@@ -59,7 +63,9 @@ type NotionProperty =
   | { type: "last_edited_time"; last_edited_time: string }
   | { type: "relation"; relation: { id: string }[] }
   | { type: "url"; url: string }
-  | { type: "number"; number: number };
+  | { type: "number"; number: number }
+  | { type: "date"; date: { start: string; end: string; time_zone: string } }
+  | { type: "checkbox"; checkbox: boolean };
 
 type NotionDbResponse = {
   has_more: boolean;
