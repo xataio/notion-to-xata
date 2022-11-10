@@ -1,5 +1,5 @@
 import { FeedbackButton } from "../components/FeedbackButton";
-import "../styles/globals.scss";
+import "../styles/globals.css";
 
 const App = ({ Component, pageProps }) => {
   return (
