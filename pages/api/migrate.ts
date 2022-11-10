@@ -9,6 +9,8 @@ export type MigrateRequestBody = {
   to: { workspaceId: string; apiKey: string };
 };
 
+const region = "us-west-2"; // TODO add dropdown to choose the region
+
 const handler: NextApiHandler = async (req, res) => {
   if (req.method !== "POST") {
     res.end("No.");
@@ -79,7 +81,7 @@ const handler: NextApiHandler = async (req, res) => {
           Authorization: `Bearer ${to.apiKey}`,
         },
         body: JSON.stringify({
-          region: "us-west-2",
+          region,
           branchName: "main",
         }),
       }
@@ -99,7 +101,7 @@ const handler: NextApiHandler = async (req, res) => {
 
       // Create a users table
       await fetch(
-        `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/users`,
+        `https://${to.workspaceId}.${region}.xata.sh/db/${databaseName}:main/tables/users`,
         {
           method: "PUT",
           headers: {
@@ -116,7 +118,7 @@ const handler: NextApiHandler = async (req, res) => {
 
       // Add a schema to it
       await fetch(
-        `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/users/schema`,
+        `https://${to.workspaceId}.${region}.xata.sh/db/${databaseName}:main/tables/users/schema`,
         {
           method: "PUT",
           headers: {
@@ -141,7 +143,7 @@ const handler: NextApiHandler = async (req, res) => {
 
       // Insert users
       await fetch(
-        `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/users/bulk`,
+        `https://${to.workspaceId}.${region}.xata.sh/db/${databaseName}:main/tables/users/bulk`,
         {
           method: "POST",
           headers: {
@@ -177,7 +179,7 @@ const handler: NextApiHandler = async (req, res) => {
     const tableName = kebab(from.name).replace("’", "");
     console.info(`Creating table with name ${tableName}...`);
     await fetch(
-      `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/${tableName}`,
+      `https://${to.workspaceId}.${region}.xata.sh/db/${databaseName}:main/tables/${tableName}`,
       {
         method: "PUT",
         headers: {
@@ -196,7 +198,7 @@ const handler: NextApiHandler = async (req, res) => {
 
     // Update the schema
     await fetch(
-      `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/${tableName}/schema`,
+      `https://${to.workspaceId}.${region}.xata.sh/db/${databaseName}:main/tables/${tableName}/schema`,
       {
         method: "PUT",
         headers: {
@@ -234,7 +236,7 @@ const handler: NextApiHandler = async (req, res) => {
 
     // Batch Import to Xata
     await fetch(
-      `https://${to.workspaceId}.xata.sh/db/${databaseName}:main/tables/${tableName}/bulk`,
+      `https://${to.workspaceId}.${region}.xata.sh/db/${databaseName}:main/tables/${tableName}/bulk`,
       {
         method: "POST",
         headers: {
