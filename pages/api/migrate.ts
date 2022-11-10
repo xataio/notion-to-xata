@@ -44,7 +44,7 @@ const handler: NextApiHandler = async (req, res) => {
     );
     // Get same name database in Xata
     const doesXataDatabaseWithSameNameExist = await fetch(
-      `https://${to.workspaceId}.xata.sh/dbs/${targetDbName}`,
+      `https://api.xata.io/workspaces/${to.workspaceId}/dbs/${targetDbName}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const handler: NextApiHandler = async (req, res) => {
 
     // Create a database in Xata
     const { databaseName } = await fetch(
-      `https://${to.workspaceId}.xata.sh/dbs/${adjustedDbName}`,
+      `https://api.xata.io/workspaces/${to.workspaceId}/dbs/${adjustedDbName}`,
       {
         method: "PUT",
         headers: {

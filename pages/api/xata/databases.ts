@@ -3,7 +3,7 @@ import { NextApiHandler } from "next";
 
 const handler: NextApiHandler = async (req, res) => {
   const { k, w } = req.query;
-  const response = await fetch(`https://${w}.xata.sh/dbs`, {
+  const response = await fetch(`https://api.xata.io/workspaces/${w}/dbs`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${k}`,
