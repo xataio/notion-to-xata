@@ -18,8 +18,11 @@
 html,
 body {
   scroll-behavior: smooth;
+}
 
-  @media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
+  html,
+  body {
     background: white;
     color: black;
   }
@@ -28,7 +31,11 @@ body {
 a:link,
 a:visited {
   color: theme("colors.primary");
-  @media (prefers-color-scheme: light) {
+}
+
+@media (prefers-color-scheme: light) {
+  a:link,
+  a:visited {
     color: theme("colors.primary-light-mode");
   }
 }
@@ -37,14 +44,12 @@ a:hover {
   color: theme("colors.accent");
 }
 
-h2 {
-  & > button {
-    visibility: hidden;
-  }
+h2 > button {
+  visibility: hidden;
+}
 
-  &:hover > button {
-    visibility: visible;
-  }
+h2:hover > button {
+  visibility: visible;
 }
 
 ::selection {
@@ -57,8 +62,8 @@ h2 {
   color: white;
 }
 
-hr {
-  @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
+  hr {
     border-color: theme("colors.softer-black");
   }
 }
