@@ -79,9 +79,7 @@ const handler: NextApiHandler = async (req, res) => {
           Authorization: `Bearer ${to.apiKey}`,
         },
         body: JSON.stringify({
-          displayName: doesXataDatabaseWithSameNameExist
-            ? `${from.name}-${Date.now()}`
-            : from.name,
+          region: "us-west-2",
           branchName: "main",
         }),
       }
