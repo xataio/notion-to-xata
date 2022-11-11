@@ -153,7 +153,7 @@ const handler: NextApiHandler = async (req, res) => {
           body: JSON.stringify({
             records: users.map((u) => ({
               name: u.name,
-              email: u.person.email,
+              email: u.person?.email,
               avatar_url: u.avatar_url,
               notion_id: u.id,
             })),
